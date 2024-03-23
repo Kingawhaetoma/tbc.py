@@ -126,10 +126,7 @@ def fight(player, enemy):
             print(f"{enemy.name} wins")
             keepGoing = False
         
-                
-
-              
-
+               
 
 def main():
       c = Character("jim", 20, 99)
