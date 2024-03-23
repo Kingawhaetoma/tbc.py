@@ -1,70 +1,98 @@
 # tbc.py
-Character Class Documentation:
+
+
+Turn Based Combat Pseudocode
+
+Import random
+
+Create Character class
+
+Name
+HP
+Armor
+hitChance
+maxdamage
+
+For each above,
+@property
+Define [variable] (self)
+Return __[variable] = value
+
+@[variable].setter
+Define [variable](self,value)
+Variable is tested to be in range
+Self.[variable] gets value in range
+
+
+Define testInt
+Takes in value
+Checks to see if it is an int(integer) between min and max
+If it is not a legal value set it to default
+
+
+Define printStats
+Print name
+HP
+Hit chance,
+max damage,
+armor.
+
+Define Hit
+If random value is less than hit chance, do damage between 1 and [maxDamage]
+Print who hits who for how much, but also how much is absorbed by armor.
+If damage is greater than armor, deal damage with armor value subtracted.
+
+Define Fight
+Print player and enemies HP
+Player hits enemy and enemy hits player
+If the player's HP is greater than the enemy's HP print”player wins” and vice versa.
+Create an input function so as to quit the game.
+
+
+Define Main
+New variable gets character info from class
+Other variable gets character info from character class
+Variable.printStats runs
+Variable2.printStats runs
+
+Run main
+
+Title: Character Battle Simulator
 
 Description:
-The Character class represents a character in a turn-based combat game. It includes attributes for the character's name, hit points, hit chance, maximum damage, and armor.
+This program simulates battles between characters in a text-based game. It defines a Character class with attributes such as name, hit points, armor, hit chance, and max damage. It also includes a fight function to simulate battles between two characters.
 
-Planned Limitations:
-1. Name: No specific limitations planned.
-2. Hit Points: Should be a positive integer. There's no upper limit to hit points, but negative hit points indicate the character is defeated.
-3. Hit Chance: Should be an integer between 0 and 100, representing the percentage chance of a successful attack.
-4. Max Damage: Should be a positive integer. There's no upper limit to max damage.
-5. Armor: Should be a non-negative integer, representing the amount of damage absorbed by the character's armor.
+Dependencies:
+- random module
 
-Algorithm for each method/function:
+Character Class:
+- Properties:
+    - name: Name of the character.
+    - hitPoints: Current hit points of the character.
+    - armor: Armor points of the character.
+    - hitChance: Chance of successfully hitting the opponent.
+    - maxDamage: Maximum damage the character can inflict.
+- Methods:
+    - __init__(): Initializes the character with default or custom attributes.
+    - testInt(): Validates integer values within specified bounds.
+    - printStats(): Prints the attributes of the character.
+    - hit(enemy): Simulates an attack on the enemy character.
 
-1. __init__(self, name, hit_points, hit_chance, max_damage, armor):
-   - Description: Initializes a new instance of the Character class.
-   - Inputs:
-     - name: String representing the character's name.
-     - hit_points: Integer representing the character's initial hit points.
-     - hit_chance: Integer representing the character's hit chance (0 to 100).
-     - max_damage: Integer representing the character's maximum damage.
-     - armor: Integer representing the character's armor value.
-   - Output: None
-   - Steps:
-     1. Set the name attribute to the provided name.
-     2. Set the hit_points attribute to the provided hit_points.
-     3. Set the hit_chance attribute to the provided hit_chance.
-     4. Set the max_damage attribute to the provided max_damage.
-     5. Set the armor attribute to the provided armor.
+Fight Function:
+- Parameters: player (character object), enemy (character object)
+- Description: Simulates a battle between two characters.
+- Iterates through rounds of attacks until one character's hit points drop to or below zero.
+- Prints the current hit points of both characters after each round.
+- Allows the user to choose whether to continue the fight or quit.
 
-2. is_alive(self):
-   - Description: Checks if the character is alive based on their hit points.
-   - Inputs: None
-   - Output: Boolean indicating whether the character is alive (True) or defeated (False).
-   - Steps:
-     1. Check if the hit_points attribute is greater than 0.
-     2. Return True if the character is alive, otherwise return False.
+Main Function:
+- Creates instances of the Character class to represent the player and the enemy.
+- Calls the printStats method to display the attributes of the player character.
+- Initiates the fight between the player and the enemy using the fight function.
 
-3. attack(self, other):
-   - Description: Performs an attack on another character.
-   - Inputs:
-     - other: Another instance of the Character class representing the target of the attack.
-   - Output: None
-   - Steps:
-     1. Generate a random number between 1 and 100.
-     2. If the random number is less than or equal to the attacker's hit_chance:
-        a. Calculate the damage inflicted by generating a random number between 1 and the attacker's max_damage.
-        b. Subtract the target's armor value from the calculated damage.
-        c. Ensure the damage is non-negative.
-        d. Subtract the final damage from the target's hit points.
-        e. Print a message indicating the attack and the damage dealt.
-     3. If the random number is greater than the hit_chance, print a message indicating a miss.
+Usage:
+- Run the program to start the character battle simulator.
+- Follow the prompts to observe battles between characters.
 
-4. heal(self):
-   - Description: Increases the character's hit points by a fixed amount.
-   - Inputs: None
-   - Output: None
-   - Steps:
-     1. Define a constant representing the amount of hit points to be healed.
-     2. Add the healing amount to the character's hit points.
-     3. Print a message indicating the healing action and the amount of hit points recovered.
 
-5. printStats(self):
-   - Description: Prints the character's attributes.
-   - Inputs: None
-   - Output: None
-   - Steps:
-     1. Print the character's name, hit points, hit chance, maximum damage, and armor attributes.
 
